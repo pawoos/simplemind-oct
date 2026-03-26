@@ -1,0 +1,45 @@
+{
+	"torch_seg": {
+		"code": "torch2d_segmentation.py",
+		"code_learn": "torch2d_segmentation_learn.py",
+		"chunk": "torch_seg",
+		"input_image": "from clahe_image",
+		"model_backbone": "efficientnet_b0",
+		"pretrained": true,
+		"encoder_unfreeze_mode": "immediate",
+		"weights_path": "../../../weights/oct/cornea.pth",
+		"split_ratio": [6,2,2],
+		"optimizer": "AdamW",
+		"num_classes": 1,
+    	"loss_dice_weight": 1.0,
+    	"loss_ce_weight": 1.0,
+		"map_output_dir": "./oct",
+		"learning_rate": 1e-4,
+		"weight_decay": 1e-4,
+		"lr_factor": 0.5,
+		"lr_patience": 5,
+		"batch_size": 16,
+		"num_epochs": 100
+	},
+
+	"mask_final": {
+		"code": "resize.py",
+		"input_image": "from torch_seg",
+		"target_image": "from input_image",
+		"order": 3,
+		"preserve_values": true,
+		"final_output": true
+	},
+
+    "save_png": {
+        "code": "save_png.py",
+        "input_image": "from input_image",
+        "input_mask": "from mask_final",
+        "mask_none": false,
+        "mask_alpha": 0.5,
+        "filename": "cornea_overlay",
+        "title": "Cornea",
+        "output_dir": "./oct"
+    }
+
+}

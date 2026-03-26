@@ -1,0 +1,9 @@
+{
+  "mask_or": {
+    "code": "mask_logic.py",
+    "input_1": "from input_image right_heel",
+    "input_2": "from input_image left_heel",
+    "logical_operator": "or",
+    "final_output": true
+  }
+}

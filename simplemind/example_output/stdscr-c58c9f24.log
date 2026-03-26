@@ -1,0 +1,37 @@
+Plan-Data           Tool                                    Consec Sample       Last Update                                          
+----------------------------------------------------------------------------------------------------                                 
+85eeb56c-c58c9f24   input_image                             4 / 4               2025-12-25 12:59:41.238212                           
+85eeb56c-c58c9f24   input_image-save_png                    4 / 4               2025-12-25 13:00:43.437536                           
+85eeb56c-c58c9f24   clahe_image-image_resize                4 / 4               2025-12-25 12:59:49.247383                           
+85eeb56c-c58c9f24   clahe_image-image_norm                  4 / 4               2025-12-25 12:59:49.509095                           
+85eeb56c-c58c9f24   clahe_image                             4 / 4               2025-12-25 12:59:50.892184                           
+85eeb56c-c58c9f24   lungs-torch_seg                         4 / 4               2025-12-25 12:59:57.512332                           
+85eeb56c-c58c9f24   trachea-torch_seg                       4 / 4               2025-12-25 12:59:56.304580                           
+85eeb56c-c58c9f24   trachea-mask_morph_close                4 / 4               2025-12-25 12:59:56.950634                           
+85eeb56c-c58c9f24   lungs                                   4 / 4               2025-12-25 12:59:58.643559                           
+85eeb56c-c58c9f24   lungs-save_png                          4 / 4               2025-12-25 13:00:07.915623                           
+85eeb56c-c58c9f24   trachea-mask_orig_size                  4 / 4               2025-12-25 12:59:57.822677                           
+85eeb56c-c58c9f24   trachea-conn_comp                       4 / 4               2025-12-25 12:59:58.797733                           
+85eeb56c-c58c9f24   trachea-decision_tree                   4 / 4               2025-12-25 12:59:59.257533                           
+85eeb56c-c58c9f24   trachea                                 4 / 4               2025-12-25 12:59:59.463492                           
+85eeb56c-c58c9f24   trachea-save_png                        4 / 4               2025-12-25 13:00:11.728079                           
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     

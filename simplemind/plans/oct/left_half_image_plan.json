@@ -1,0 +1,27 @@
+{
+	"image_half_left": {
+		"code": "half_image.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from input_image",
+        "side": "left"
+	},
+	"image_crop": {
+		"code": "crop.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from image_half_left",
+        "square_size": 350,
+		"center_x": 250,
+		"center_y": 650,
+		"final_output": true
+	},
+	"image_crop_annotation": {
+        "code": "uncrop.py",
+		"chunk": "image_preprocessing",
+        "input_image": "from input_image",
+        "cropped_image": "from image_crop",
+        "border_thickness": 10,
+        "fill_region": true,
+        "debug": false
+    }
+	
+}

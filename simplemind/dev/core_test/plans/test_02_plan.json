@@ -1,0 +1,17 @@
+{
+  "write_numpy": {
+    "code": "write_numpy.py",
+      "num_arrays": 100,
+      "array_dim": 1000,
+      "array_value": 5,
+      "dataset_id": 999,
+      "reverse": false
+  },
+
+  "pass_numpy": {
+    "code": "pass_numpy.py",
+      "array": "from write_numpy",
+      "sleep": 0
+  }
+
+}

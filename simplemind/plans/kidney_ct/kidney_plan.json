@@ -1,0 +1,47 @@
+{
+  "image_resize": {
+    "code": "resize.py",
+    "chunk": "image_preprocessing",
+    "input_image": "from input_image",
+    "target_shape": [1, 128, 128, 128],
+    "order": 3,
+    "preserve_range": true,
+    "anti_aliasing": true
+  },
+
+  "image_norm": {
+    "code": "minmax_norm.py",
+    "chunk": "image_preprocessing",
+    "input_image": "from image_resize"
+  },
+
+  "torch_seg": {
+    "code": "torch3d_segmentation.py",
+    "code_learn": "torch3d_segmentation_learn.py",
+    "input_image": "from image_norm",
+	"weights_path": "../../../weights/kidney_weights.pth",
+    "num_classes": 1,
+    "map_output_dir": "./samples",
+	"split_ratio": [6,2,2],
+    "loss_dice_weight": 1.0,
+    "loss_ce_weight": 0.5,
+    "loss_include_background": false,
+    "learning_rate": 5e-4,
+    "lr_factor": 0.5,
+    "lr_patience": 5,
+    "weight_decay": 1e-3,
+    "batch_size": 2,
+    "gradient_accumulation": 1,
+    "num_epochs": 200,
+    "early_stop_patience": 20,
+    "dropout": 0.0,
+    "aug_h_flip_prob": 0.5,
+    "aug_v_flip_prob": 0.5,
+    "aug_affine_p": 0.5,
+    "aug_rotate_range": [0.2, 0.2, 0.2],
+    "aug_scale_range": [0.05, 0.05, 0.05],
+    "aug_deformation_p": 0.5,
+    "aug_deformation_sigma_range": [2, 3],
+    "aug_deformation_alpha_range": [10, 20]
+  }
+}

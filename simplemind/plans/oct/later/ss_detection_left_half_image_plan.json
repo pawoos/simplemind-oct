@@ -1,0 +1,18 @@
+{
+    "neural_net-ss": {
+        "code": "oct_ss_detection.py",
+        "input_image": "from left_half_image",
+        "box_size": 350,
+        "device": "cpu"
+    },
+    "image_scleral_spur": {
+        "code": "scleral_spur.py",
+        "input_image": "from left_half_image",
+        "coordinate_source": "from neural_net-ss",
+        "circle_radius": 1,
+        "rectangle_size": 15,
+        "draw_rectangle": true,
+        "debug": false,
+        "final_output": true
+    }
+}

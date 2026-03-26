@@ -1,0 +1,46 @@
+{
+    "mask_points": {
+        "code": "make_mask.py",
+        "chunk": "make_mask",
+        "target_image": "from input_image",
+        "mask_points": "from sample_arg mask_points"
+    },
+
+    "prompt_mask": {
+        "code": "bounding_box.py",
+        "chunk": "make_mask",
+        "input_image": "from mask_points",
+        "final_output": true
+    },
+
+    "bounding_box": {
+        "code": "bounding_box.py",
+        "chunk": "bounding_box_outline",
+        "input_image": "from prompt_mask",
+        "x_lower_offset": -2,
+        "x_upper_offset": 2,
+        "y_lower_offset": -2,
+        "y_upper_offset": 2,
+        "offset_unit": "voxels"
+    },
+
+    "bounding_box_outline": {
+        "code": "mask_logic.py",
+        "chunk": "bounding_box_outline",
+        "input_1": "from bounding_box",
+        "input_2": "from prompt_mask",
+        "logical_operator": "sub"
+    },
+
+    "save_png": {
+        "code": "save_png.py",
+        "chunk": "bounding_box_outline",
+        "input_image": "from input_image",
+        "input_mask": "from bounding_box_outline",
+        "mask_slice_axis": 0,
+        "mask_alpha": 0.5,
+        "filename": "prompt_box",
+        "title": "mask",
+        "output_dir": "./samples"
+    }
+}

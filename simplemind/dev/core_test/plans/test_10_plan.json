@@ -1,0 +1,26 @@
+{
+  "write_numpy_1": {
+    "code": "write_numpy.py",
+      "num_arrays": 800,
+      "array_dim": 1000,
+      "array_value": 1000,
+      "dataset_id": 995,
+      "reverse": false
+  },
+
+  "write_numpy_2": {
+    "code": "write_numpy.py",
+      "num_arrays": 800,
+      "array_dim": 1000,
+      "array_value": "s",
+      "dataset_id": 995,
+      "reverse": true
+  },
+
+  "add_numpy": {
+    "code": "add_numpy.py",
+      "array_1": "from write_numpy_1",
+      "array_2": "from write_numpy_2"
+  }
+
+}

@@ -1,0 +1,40 @@
+[project]
+name = "simplemind"
+version = "1.2.0"
+requires-python = ">=3.10"
+description = "Making AI simple again"
+readme = "readme.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Brown et al", email = "MBrown@mednet.ucla.edu"},
+    { name = "Center for Computer Vision and Imaging Biomarkers at UCLA" }
+]
+
+[project.scripts]
+
+reader-nifti_loader = "simplemind.agent.loader.nifti_loader:entrypoint"
+image_processing-threshold_hu = "simplemind.agent.image_processing.threshold_hu:entrypoint"
+image_processing-crop = "simplemind.agent.image_processing.crop:entrypoint"
+
+mask_processing-get_mask_by_label = "simplemind.agent.mask_processing.get_mask_by_label:entrypoint"
+mask_processing-mask_logic = "simplemind.agent.mask_processing.mask_logic:entrypoint"
+mask_processing-spatial_offset = "simplemind.agent.mask_processing.spatial_offset:entrypoint"
+mask_processing-connected_components = "simplemind.agent.mask_processing.connected_components:entrypoint"
+mask_processing-morphology = "simplemind.agent.mask_processing.old_morphology:entrypoint"
+mask_processing-bounding_box = "simplemind.agent.mask_processing.bounding_box:entrypoint"
+mask_processing-ensemble = "simplemind.agent.mask_processing.ensemble:entrypoint"
+mask_processing-edges = "simplemind.agent.mask_processing.edges:entrypoint"
+
+reasoning-reasoning = "simplemind.agent.reasoning.reasoning:entrypoint"
+reasoning-candidate_selector = "simplemind.agent.reasoning.candidate_selector_new:entrypoint"
+
+external-run_nnunet = "simplemind.agent.external.nnunet_agent:entrypoint"
+external-total_segmentator = "simplemind.agent.external.total_segmentator:entrypoint"
+external-medsam = "simplemind.agent.external.run_medsam:entrypoint"
+
+feature_extraction-longest_diameter = "simplemind.agent.feature_extraction.longest_diameter:entrypoint"
+
+run_core = "simplemind.run_core:entrypoint"
+run_cxr = "simplemind.run_cxr:entrypoint"
+run_cxr_ucla = "simplemind.run_cxr_ucla:entrypoint"
+

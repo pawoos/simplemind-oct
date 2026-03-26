@@ -1,0 +1,42 @@
+{
+  "write_numpy": {
+    "code": "write_numpy.py",
+      "num_arrays": 10,
+      "array_dim": 1000,
+      "array_value": 5,
+      "dataset_id": 999,
+      "reverse": false
+  },
+
+  "pass_numpy_1": {
+    "code": "pass_numpy.py",
+      "array": "from write_numpy ndarray",
+      "sleep": 0
+  },
+  "pass_numpy_2": {
+    "code": "pass_numpy.py",
+      "array": "from pass_numpy_1 ndarray",
+      "sleep": 1
+  },
+  "pass_numpy_3": {
+    "code": "pass_numpy.py",
+      "array": "from pass_numpy_2 ndarray",
+      "sleep": 2
+  },
+  "pass_numpy_4": {
+    "code": "pass_numpy.py",
+      "array": "from pass_numpy_3 ndarray",
+      "sleep": 0
+  },
+  "pass_numpy_5": {
+    "code": "pass_numpy.py",
+      "array": "from pass_numpy_4 ndarray",
+      "sleep": 3
+  },
+  "pass_numpy_6": {
+    "code": "pass_numpy.py",
+      "array": "from pass_numpy_5 ndarray",
+      "sleep": 1
+  }
+
+}

@@ -1,0 +1,16 @@
+{
+    "image_half_right": {
+		"code": "half_image.py",
+		"chunk": "image_postprocessing",
+		"input_image": "from input_image",
+        "side": "right"
+	},
+    "image_flip": {
+		"code": "flip.py",
+		"chunk": "image_postprocessing",
+		"input_image": "from image_half_right",
+        "axis": "x",
+		"final_output": true
+	}
+
+}

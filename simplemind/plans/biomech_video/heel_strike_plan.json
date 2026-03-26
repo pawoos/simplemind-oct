@@ -1,0 +1,68 @@
+{
+    "strike_path": {
+        "code": "mask_logic.py",
+        "input_1": "from heel_paths",
+        "input_2": "from force_plate_region",
+        "logical_operator": "and"
+    },
+
+    "bb_upper_y": {
+        "code": "bounding_box.py",
+        "chunk": "upper_y_slice",
+        "input_image": "from strike_path",
+        "y_upper_offset": -1,
+        "offset_unit": "voxels"
+    },
+
+    "strike_point": {
+        "code": "mask_logic.py",
+        "chunk": "upper_y_slice",
+        "input_1": "from strike_path",
+        "input_2": "from bb_upper_y",
+        "logical_operator": "sub"
+    },
+
+    "overlay_bb1": {
+        "code": "bounding_box.py",
+        "chunk": "bounding_box_outline",
+        "input_image": "from strike_point",
+        "y_upper_offset": 10,
+        "y_lower_offset": -10,
+        "x_upper_offset": 10,
+        "x_lower_offset": -10,
+        "offset_unit": "voxels"
+    },
+
+    "overlay_bb2": {
+        "code": "bounding_box.py",
+        "chunk": "bounding_box_outline",
+        "input_image": "from strike_point",
+        "y_upper_offset": 9,
+        "y_lower_offset": -9,
+        "x_upper_offset": 9,
+        "x_lower_offset": -9,
+        "offset_unit": "voxels"
+    },
+
+    "overlay_bb": {
+        "code": "mask_logic.py",
+        "chunk": "bounding_box_outline",
+        "input_1": "from overlay_bb1",
+        "input_2": "from overlay_bb2",
+        "logical_operator": "sub"
+    },
+
+    "overlay_final": {
+        "code": "mask_logic.py",
+        "input_1": "from heel_paths",
+        "input_2": "from overlay_bb",
+        "logical_operator": "or"
+    },
+
+    "strike_features": {
+        "code": "mask_features.py",
+        "chunk": "mask_features",
+        "input_mask": "from strike_point",
+        "final_output": true
+    }
+}

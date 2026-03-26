@@ -1,0 +1,93 @@
+{
+	"torch_seg": {
+		"code": "torch2d_segmentation.py",
+		"code_learn": "torch2d_segmentation_learn.py",
+		"chunk": "torch_seg",
+		"input_image": "from clahe_image",
+		"weights_path": "../../../weights/oct/iris.pth",
+		"map_output_dir": "./oct",
+		"gpu_num": "from arg gpu_num",
+		"model_backbone": "efficientnet_b0",
+		"pretrained": true,
+		"encoder_unfreeze_mode": "immediate",
+		"split_ratio": [6,2,2],
+		"optimizer": "AdamW",
+    	"loss_dice_weight": 1.0,
+    	"loss_ce_weight": 1.0,
+		"label_smoothing": 0.2,
+		"label_smooth_edge_width": 3.0,
+		"batch_size": 8,
+		"learning_rate": 5e-4,
+		"weight_decay": 1e-4,
+		"num_epochs": 200,
+		"early_stop_patience": 20,
+		"aug_h_flip_prob": 0.0,
+		"aug_v_flip_prob": 0.0,
+		"aug_degrees": 10,
+		"aug_translate": [0.05, 0.05],
+		"aug_scale": [0.95, 1.05],
+		"aug_persp_distortion_scale": 0.03, 
+		"aug_persp_p": 0.3,
+		"aug_deformation_alpha": 10, 
+		"aug_deformation_sigma": 5, 
+		"aug_deformation_p": 0.2
+	},
+
+	"mask_morph_close": {
+		"code": "morphology.py",
+		"chunk": "mask_post_processing",
+		"input_image": "from torch_seg",
+		"morphological_task": "close",
+		"kernel": "ellipse 10 10"
+	}, 
+
+	"mask_orig_size": {
+		"code": "resize.py",
+		"chunk": "mask_post_processing",
+		"input_image": "from mask_morph_close",
+		"target_image": "from input_image",
+		"order": 3,
+		"preserve_values": true
+	},
+
+	"conn_comp": {
+		"code": "conn_comp.py",
+		"chunk": "candidate_selection",
+		"input_image": "from mask_orig_size",
+		"voxel_count_threshold": 100
+	},  
+
+	"decision_tree": {
+		"code": "decision_tree.py",
+		"code_learn": "decision_tree_learn.py",
+		"chunk": "candidate_selection",
+		"candidate_masks": "from conn_comp",
+		"pydt_dict": "plans/oct/iris_dt.json",
+		"max_depth": 1,
+		"visualize_png": true,
+		"log_reasoning_output": true,
+		"log_reasoning_dir": "./oct"
+	}, 
+
+	"cand_select": {
+		"code": "cand_select.py",
+		"chunk": "candidate_selection",
+		"candidate_masks": "from conn_comp",
+		"candidate_confidences": "from decision_tree",
+		"threshold": 0.5,
+		"largest_only": true,
+		"final_output": true
+	}, 
+
+    "save_png": {
+        "code": "save_png.py",
+        "input_image": "from input_image",
+        "input_mask": "from cand_select",
+        "mask_none": false,
+        "mask_alpha": 0.5,
+        "filename": "iris_overlay",
+        "title": "Iris",
+        "output_dir": "./oct"
+    }
+
+}

@@ -1,0 +1,29 @@
+{
+    "neural_net-ss": {
+        "code": "oct_ss_detection.py",
+        "chunk": "scleral_spur_detection",
+        "input_image": "from left_half_image",
+        "device": "cpu"
+    },
+    "image_scleral_spur": {
+        "code": "scleral_spur.py",
+        "chunk": "scleral_spur_detection",
+        "input_image": "from left_half_image",
+        "coordinate_source": "from neural_net-ss",
+        "circle_radius": 1,
+        "rectangle_size": 15,
+        "draw_rectangle": true,
+        "debug": false
+    },
+    "uncrop_scleral_spur": {
+        "code": "uncrop_scleral_spur.py",
+        "chunk": "scleral_spur_detection",
+        "input_image": "from input_image",
+        "cropped_detection": "from neural_net-ss",
+        "circle_radius": 5,
+        "rectangle_size": 50,
+        "draw_rectangle": true,
+        "debug": false,
+        "final_output": true
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "force_plate_region": {
+    "code": "bounding_box.py",
+    "input_image": "from heel_paths",
+    "y_lower_offset": 0.85,
+    "x_upper_offset": -0.35,
+    "x_lower_offset": 0.35,
+    "offset_unit": "length_fraction",
+    "final_output": true
+  },
+
+  "force_plate_expanded": {
+    "code": "bounding_box.py",
+    "chunk": "bounding_box_outline",
+    "input_image": "from force_plate_region",
+    "y_upper_offset": 1,
+    "y_lower_offset": -1,
+    "x_upper_offset": 1,
+    "x_lower_offset": -1,
+    "offset_unit": "voxels"
+  },
+
+  "force_plate_outline": {
+    "code": "mask_logic.py",
+    "chunk": "bounding_box_outline",
+    "input_1": "from force_plate_expanded",
+    "input_2": "from force_plate_region",
+    "logical_operator": "sub"
+  },
+
+  "force_plate_display": {
+    "code": "mask_logic.py",
+    "chunk": "outline",
+    "input_1": "from heel_paths",
+    "input_2": "from force_plate_outline",
+    "logical_operator": "or"
+  }
+}

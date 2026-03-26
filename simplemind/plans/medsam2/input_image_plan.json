@@ -1,0 +1,8 @@
+{
+    "input_image": {
+        "code": "read_sm_image.py",
+        "image_bytes": "from any image file npz",
+        "label_mask_bytes": "from any mask file npz",
+        "final_output": true
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "totalseg": {
+    "code": "totalseg.py",
+    "context": "./tools/neural_net/totalseg/",
+    "input_image": "from input_image",
+
+    "task": "total",
+    "fast": false,
+
+    "output_mode": "labelmap_raw",
+    "output_dir": "../output",
+    "final_output": true
+  },
+
+  "save_png": {
+    "code": "save_png.py",
+    "context": "./tools/image_processing/save_png/",
+    "input_image": "from input_image",
+    "input_mask": "from totalseg",
+
+    "mask_slice_axis": 0,
+    "mask_none": false,
+    "mask_alpha": 0.5,
+
+    "filename": "totalseg_dense",
+    "title": "TS: dense labelmap",
+    "output_dir": "./samples"
+  }
+}

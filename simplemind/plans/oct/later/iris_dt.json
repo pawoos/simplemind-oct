@@ -1,0 +1,13 @@
+{
+  "name": "area", 
+  "threshold": 300,
+  "_units": "mm2",
+  "left": [1.0, 0.0],
+  "right": {
+    "name": "area",
+    "threshold": 10000,
+    "_units": "mm2",
+    "left": [0.0, 1.0],
+    "right": [1.0, 0.0]
+  }
+}

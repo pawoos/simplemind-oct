@@ -1,0 +1,1371 @@
+Task exception was never retrieved
+future: <Task finished name='Task-36' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return self._loop.run_until_complete(task)
+    return self._loop.run_until_complete(task)
+Traceback (most recent call last):
+Traceback (most recent call last):
+    return self._loop.run_until_complete(task)
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return future.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return self._loop.run_until_complete(task)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 118, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return self._loop.run_until_complete(task)
+    return self._loop.run_until_complete(task)
+    return self._loop.run_until_complete(task)
+    return future.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return self._loop.run_until_complete(task)
+    return future.result()
+    return future.result()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-decision_tree-85eeb56c-c5f51b42/sm_tool.py", line 511, in main
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return self._loop.run_until_complete(task)
+    return future.result()
+    return future.result()
+    return self._loop.run_until_complete(task)
+    return future.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+           ^^^^^^^^^^^^^^^
+    return future.result()
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+           ^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-save_png-85eeb56c-9477cbe4/sm_tool.py", line 511, in main
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-torch_seg-85eeb56c-736c1ac3/sm_tool.py", line 511, in main
+    return future.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return future.result()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_morph_close-85eeb56c-4df35551/sm_tool.py", line 511, in main
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-torch_seg-85eeb56c-7cb3f27f/sm_tool.py", line 511, in main
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_norm-85eeb56c-7d6293b3/sm_tool.py", line 511, in main
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-85eeb56c-6398f8b4/sm_tool.py", line 511, in main
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-save_png-85eeb56c-419356b5/sm_tool.py", line 511, in main
+    return future.result()
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-save_png-85eeb56c-a273d75f/sm_tool.py", line 511, in main
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-85eeb56c-32e22299/sm_tool.py", line 511, in main
+    return future.result()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-decision_tree-85eeb56c-c5f51b42/sm_sample_processor.py", line 95, in run
+    return future.result()
+           ^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^
+    await self.run()
+    return future.result()
+    await self.run()
+    await self.run()
+           ^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-85eeb56c-adafa0f6/sm_tool.py", line 511, in main
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-85eeb56c-56728daf/sm_tool.py", line 511, in main
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-conn_comp-85eeb56c-f5ff1129/sm_tool.py", line 511, in main
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-torch_seg-85eeb56c-7cb3f27f/sm_sample_processor.py", line 95, in run
+           ^^^^^^^^^^^^^^^
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-save_png-85eeb56c-9477cbe4/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-torch_seg-85eeb56c-736c1ac3/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_orig_size-85eeb56c-6947b46d/sm_tool.py", line 511, in main
+    await self.run()
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_morph_close-85eeb56c-4df35551/sm_sample_processor.py", line 95, in run
+    await self.run()
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_resize-85eeb56c-12535ed6/sm_tool.py", line 511, in main
+    kwargs, msgs, sample_id = await self.get_execute_args()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_norm-85eeb56c-7d6293b3/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-85eeb56c-6398f8b4/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-save_png-85eeb56c-419356b5/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-save_png-85eeb56c-a273d75f/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-85eeb56c-32e22299/sm_sample_processor.py", line 95, in run
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    kwargs, msgs, sample_id = await self.get_execute_args()
+    kwargs, msgs, sample_id = await self.get_execute_args()
+    await self.run()
+    await self.run()
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-decision_tree-85eeb56c-c5f51b42/sm_tool.py", line 407, in get_execute_args
+    kwargs, msgs, sample_id = await self.get_execute_args()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    kwargs, msgs, sample_id = await self.get_execute_args()
+    await self.run()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-85eeb56c-adafa0f6/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-85eeb56c-56728daf/sm_sample_processor.py", line 95, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-conn_comp-85eeb56c-f5ff1129/sm_sample_processor.py", line 95, in run
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    kwargs, msgs, sample_id = await self.get_execute_args()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-torch_seg-85eeb56c-736c1ac3/sm_tool.py", line 407, in get_execute_args
+    kwargs, msgs, sample_id = await self.get_execute_args()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-torch_seg-85eeb56c-7cb3f27f/sm_tool.py", line 407, in get_execute_args
+    kwargs, msgs, sample_id = await self.get_execute_args()
+    await self.run()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_morph_close-85eeb56c-4df35551/sm_tool.py", line 407, in get_execute_args
+    kwargs, msgs, sample_id = await self.get_execute_args()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_orig_size-85eeb56c-6947b46d/sm_sample_processor.py", line 95, in run
+    kwargs, msgs, sample_id = await self.get_execute_args()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-save_png-85eeb56c-9477cbe4/sm_tool.py", line 407, in get_execute_args
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_norm-85eeb56c-7d6293b3/sm_tool.py", line 407, in get_execute_args
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-85eeb56c-6398f8b4/sm_tool.py", line 407, in get_execute_args
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-save_png-85eeb56c-419356b5/sm_tool.py", line 407, in get_execute_args
+    msg = await self.get_next_sample_msg(key)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_resize-85eeb56c-12535ed6/sm_sample_processor.py", line 95, in run
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    kwargs, msgs, sample_id = await self.get_execute_args()
+    kwargs, msgs, sample_id = await self.get_execute_args()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    kwargs, msgs, sample_id = await self.get_execute_args()
+    msg = await self.get_next_sample_msg(key)
+    msg = await self.get_next_sample_msg(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-save_png-85eeb56c-a273d75f/sm_tool.py", line 407, in get_execute_args
+    msg = await self.get_next_sample_msg(key)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-85eeb56c-56728daf/sm_tool.py", line 407, in get_execute_args
+    kwargs, msgs, sample_id = await self.get_execute_args()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-85eeb56c-32e22299/sm_tool.py", line 407, in get_execute_args
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-conn_comp-85eeb56c-f5ff1129/sm_tool.py", line 407, in get_execute_args
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-torch_seg-85eeb56c-736c1ac3/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.get_next_sample_msg(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-torch_seg-85eeb56c-7cb3f27f/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.get_next_sample_msg(key)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-decision_tree-85eeb56c-c5f51b42/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.get_next_sample_msg(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.get_next_sample_msg(key)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_orig_size-85eeb56c-6947b46d/sm_tool.py", line 407, in get_execute_args
+    msg = await self.get_next_sample_msg(key)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-85eeb56c-adafa0f6/sm_tool.py", line 407, in get_execute_args
+    kwargs, msgs, sample_id = await self.get_execute_args()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-save_png-85eeb56c-9477cbe4/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_norm-85eeb56c-7d6293b3/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_morph_close-85eeb56c-4df35551/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.get_next_sample_msg(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-save_png-85eeb56c-a273d75f/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.get_next_sample_msg(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.get_next_msg(param_key)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.get_next_sample_msg(key)
+    msg = await self.get_next_sample_msg(key)
+    msg = await self.get_next_msg(param_key)
+    msg = await self.get_next_msg(param_key)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-85eeb56c-6398f8b4/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-85eeb56c-56728daf/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-85eeb56c-32e22299/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.get_next_sample_msg(key)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-save_png-85eeb56c-419356b5/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-torch_seg-85eeb56c-736c1ac3/sm_tool.py", line 314, in get_next_msg
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_resize-85eeb56c-12535ed6/sm_tool.py", line 407, in get_execute_args
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.get_next_msg(param_key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-torch_seg-85eeb56c-7cb3f27f/sm_tool.py", line 314, in get_next_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.get_next_msg(param_key)
+    msg = await self.get_next_msg(param_key)
+    msg = await self.get_next_msg(param_key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_orig_size-85eeb56c-6947b46d/sm_tool.py", line 325, in get_next_sample_msg
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-85eeb56c-adafa0f6/sm_tool.py", line 325, in get_next_sample_msg
+    msg = await self.input_channels[param_key].get()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-conn_comp-85eeb56c-f5ff1129/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-save_png-85eeb56c-9477cbe4/sm_tool.py", line 314, in get_next_msg
+    msg = await self.get_next_msg(param_key)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-decision_tree-85eeb56c-c5f51b42/sm_tool.py", line 314, in get_next_msg
+    msg = await self.get_next_msg(param_key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_morph_close-85eeb56c-4df35551/sm_tool.py", line 314, in get_next_msg
+    msg = await self.get_next_msg(param_key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.get_next_msg(param_key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-85eeb56c-6398f8b4/sm_tool.py", line 314, in get_next_msg
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_norm-85eeb56c-7d6293b3/sm_tool.py", line 314, in get_next_msg
+    msg = await self.input_channels[param_key].get()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-85eeb56c-56728daf/sm_tool.py", line 314, in get_next_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-85eeb56c-32e22299/sm_tool.py", line 314, in get_next_msg
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-save_png-85eeb56c-a273d75f/sm_tool.py", line 314, in get_next_msg
+    msg = await self.get_next_sample_msg(key)
+    msg = await self.get_next_msg(param_key)
+    msg = await self.get_next_msg(param_key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-save_png-85eeb56c-419356b5/sm_tool.py", line 314, in get_next_msg
+    msg = await self.get_next_msg(param_key)
+    msg = await self.input_channels[param_key].get()
+    await getter
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_resize-85eeb56c-12535ed6/sm_tool.py", line 325, in get_next_sample_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-85eeb56c-adafa0f6/sm_tool.py", line 314, in get_next_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+asyncio.exceptions.CancelledError
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.input_channels[param_key].get()
+    await getter
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    msg = await self.input_channels[param_key].get()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_orig_size-85eeb56c-6947b46d/sm_tool.py", line 314, in get_next_msg
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+    msg = await self.input_channels[param_key].get()
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-conn_comp-85eeb56c-f5ff1129/sm_tool.py", line 314, in get_next_msg
+    await getter
+
+During handling of the above exception, another exception occurred:
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+    msg = await self.get_next_msg(param_key)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    await getter
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+asyncio.exceptions.CancelledError
+
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+    await getter
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+During handling of the above exception, another exception occurred:
+
+    msg = await self.input_channels[param_key].get()
+    await getter
+    await getter
+    msg = await self.input_channels[param_key].get()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_resize-85eeb56c-12535ed6/sm_tool.py", line 314, in get_next_msg
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+asyncio.exceptions.CancelledError
+
+    await getter
+During handling of the above exception, another exception occurred:
+
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-torch_seg-85eeb56c-736c1ac3/torch2d_segmentation.py", line 147, in <module>
+    await getter
+asyncio.exceptions.CancelledError
+    await getter
+Traceback (most recent call last):
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-torch_seg-85eeb56c-7cb3f27f/torch2d_segmentation.py", line 147, in <module>
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+asyncio.exceptions.CancelledError
+
+asyncio.exceptions.CancelledError
+
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    await getter
+    await getter
+During handling of the above exception, another exception occurred:
+
+asyncio.exceptions.CancelledError
+
+Traceback (most recent call last):
+asyncio.exceptions.CancelledError
+
+
+During handling of the above exception, another exception occurred:
+asyncio.exceptions.CancelledError
+
+    msg = await self.input_channels[param_key].get()
+    await getter
+During handling of the above exception, another exception occurred:
+
+During handling of the above exception, another exception occurred:
+
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+asyncio.exceptions.CancelledError
+asyncio.exceptions.CancelledError
+    asyncio.run(tool.main())
+Traceback (most recent call last):
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-85eeb56c-6398f8b4/cand_select.py", line 119, in <module>
+During handling of the above exception, another exception occurred:
+
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-save_png-85eeb56c-9477cbe4/save_png.py", line 224, in <module>
+    asyncio.run(tool.main())
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+During handling of the above exception, another exception occurred:
+
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_morph_close-85eeb56c-4df35551/morphology.py", line 241, in <module>
+    await getter
+
+
+During handling of the above exception, another exception occurred:
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_norm-85eeb56c-7d6293b3/minmax_norm.py", line 52, in <module>
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-decision_tree-85eeb56c-c5f51b42/decision_tree.py", line 158, in <module>
+Traceback (most recent call last):
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-85eeb56c-56728daf/resize.py", line 128, in <module>
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/queues.py", line 158, in get
+During handling of the above exception, another exception occurred:
+
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-85eeb56c-32e22299/clahe.py", line 76, in <module>
+    asyncio.run(tool.main())
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+    asyncio.run(tool.main())
+
+    return runner.run(main)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-save_png-85eeb56c-419356b5/save_png.py", line 224, in <module>
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    await getter
+    asyncio.run(tool.main())
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+During handling of the above exception, another exception occurred:
+
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+    asyncio.run(tool.main())
+Traceback (most recent call last):
+           ^^^^^^^^^^^^^^^^
+    raise KeyboardInterrupt()
+asyncio.exceptions.CancelledError
+    asyncio.run(tool.main())
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-mask_orig_size-85eeb56c-6947b46d/resize.py", line 128, in <module>
+    return runner.run(main)
+    asyncio.run(tool.main())
+
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/lungs-save_png-85eeb56c-a273d75f/save_png.py", line 224, in <module>
+    return runner.run(main)
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/input_image-85eeb56c-adafa0f6/read_sm_image.py", line 126, in <module>
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+    asyncio.run(tool.main())
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+    asyncio.run(tool.main())
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/trachea-conn_comp-85eeb56c-f5ff1129/conn_comp.py", line 74, in <module>
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    return runner.run(main)
+    raise KeyboardInterrupt()
+    asyncio.run(tool.main())
+
+    return runner.run(main)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+    asyncio.run(tool.main())
+    asyncio.run(tool.main())
+    raise KeyboardInterrupt()
+           ^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+           ^^^^^^^^^^^^^^^^
+    return runner.run(main)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+KeyboardInterrupt
+    asyncio.run(tool.main())
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+  File "/mnt/c/Users/sachi/new_sm/simplemind/working-85eeb56c/runtime/clahe_image-image_resize-85eeb56c-12535ed6/resize.py", line 128, in <module>
+    return runner.run(main)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+           ^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+    return runner.run(main)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+    raise KeyboardInterrupt()
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+KeyboardInterrupt
+    asyncio.run(tool.main())
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x784a4b30d940>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x784a4a72f6d0>
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x7d77422858a0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7d77422fcd90>
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x745848bcaca0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7458493ae850>
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x75c2c073d9e0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x75c2bfb4b2d0>
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x73418d3aa480>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x73418da588d0>
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x724a6fff47c0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x724a6fedfed0>
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x7eba535696c0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7eba50d80510>
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x775d8cc831a0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x775d8ccfb690>
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ServerDisconnectedError('Server disconnected')>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/streams.py", line 680, in read
+    await self._waiter
+aiohttp.client_exceptions.ServerDisconnectedError: Server disconnected
+Exception ignored in: <function HTTPTransit.__del__ at 0x775c70a5c4a0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x775c70acbc50>
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x78cc2f8251c0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x78cc3004c2d0>
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x75625e6ef240>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x75625ee52a10>
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x73a173f487c0>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x73a17384c650>
+Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<Agent.fetch_loop() done, defined at /root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py:24> exception=ClientConnectorError(ConnectionKey(host='127.0.0.1', port=8080, is_ssl=False, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None), ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8080)"))>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1268, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8080)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 28, in fetch_loop
+    err = await self.fetch()
+          ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/agent.py", line 37, in fetch
+    bb_len = await self.bb.len()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 187, in len
+    async with self.session.get(url) as response:
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1581, in _create_direct_connection
+    raise last_exc
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1550, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/aiohttp/connector.py", line 1291, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8080 ssl:default [Connect call failed ('127.0.0.1', 8080)]
+Exception ignored in: <function HTTPTransit.__del__ at 0x738b9f819620>
+Traceback (most recent call last):
+  File "/root/micromamba/envs/smcore/lib/python3.11/site-packages/smcore/http_transit.py", line 37, in __del__
+  File "/root/micromamba/envs/smcore/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+RuntimeError: no running event loop
+sys:1: RuntimeWarning: coroutine 'ClientSession.close' was never awaited
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x738b9fc84390>

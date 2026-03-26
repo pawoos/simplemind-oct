@@ -1,0 +1,12 @@
+dataset=c58c9f24, sample=4, total=5
+reasoning_output:
+[
+  {
+    "name": "cand_1",
+    "features": {
+      "area": 2105.5252526621857
+    },
+    "confidence": 1.0,
+    "prediction_path": "area 2105.5252526621857 > 300 -> area 2105.5252526621857 <= 10000 -> [0.0, 1.0]"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "input_image": {
+    "code": "read_sm_image.py",
+    "image_bytes": "from any image file nifti",
+    "label_mask_bytes": "from any mask file nifti",
+    "final_output": true
+  },
+
+  "save_png": {
+      "code": "save_png.py",
+      "input_image": "from any SMImage",
+      "output_dir": "./lungs"
+  }
+
+}

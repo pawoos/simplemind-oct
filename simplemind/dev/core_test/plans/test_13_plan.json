@@ -1,0 +1,41 @@
+{
+  "write_numpy_1": {
+    "code": "write_numpy.py",
+      "num_arrays": 10,
+      "array_dim": 1000,
+      "array_value": 1,
+      "dataset_id": 992,
+      "reverse": true
+  },
+
+  "write_numpy_2": {
+    "code": "write_numpy.py",
+      "num_arrays": 10,
+      "array_dim": 1000,
+      "array_value": "s",
+      "dataset_id": 992,
+      "reverse": false
+  },
+
+  "add_numpy_1": {
+    "code": "add_numpy.py",
+      "array_1": "from write_numpy_1",
+      "array_2": "from write_numpy_2",
+      "sleep": 0
+  },
+
+  "add_numpy_2": {
+    "code": "add_numpy.py",
+      "array_1": "from write_numpy_1",
+      "array_2": "from add_numpy_1",
+      "sleep": 2
+  },
+
+  "add_numpy_3": {
+    "code": "add_numpy.py",
+      "array_1": "from add_numpy_2",
+      "array_2": "from write_numpy_2",
+      "sleep": 1
+  }
+
+}

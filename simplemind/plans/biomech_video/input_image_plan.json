@@ -1,0 +1,19 @@
+{
+    "biomech_video_mask": {
+        "code": "biomech_video_mask_reader.py",
+        "csv_bytes": "from any biomech_video_mask image file",
+        "object_names": ["Right_Heel", "Left_Heel"],
+        "x_dim": 700,
+        "y_dim": 500,
+        "likelihood_threshold": 0.5,
+        "final_output": true
+    },
+
+    "png_file": {
+        "code": "save_png.py",
+        "input_image": "from any SMImage",
+        "output_dir": "./samples",
+        "flatten_axis": 0,
+        "invert_mask": true
+    }
+}

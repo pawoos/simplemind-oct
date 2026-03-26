@@ -1,0 +1,20 @@
+{
+    "medsam2_mask": {
+        "code": "medsam2.py",
+        "input_image": "from input_image",
+        "prompt_mask": "from prompt_mask",
+        "final_output": true
+    },
+
+    "save_png": {
+        "code": "save_png.py",
+        "input_image": "from input_image",
+        "input_mask": "from medsam2_mask",
+        "mask_slice_axis": 0,
+        "mask_none": false,
+        "mask_alpha": 0.5,
+        "filename": "medsam2_mask",
+        "title": "medsam2",
+        "output_dir": "./samples"
+    }
+}

@@ -1,0 +1,26 @@
+{
+	"image_resize": {
+		"code": "resize.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from input_image",
+		"target_shape": [1, 1, 512, 512],
+		"order": 3,
+		"preserve_range": true,
+		"anti_aliasing": true
+	},
+
+	"image_norm": {
+		"code": "minmax_norm.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from image_resize"
+	},
+
+	"image_clahe": {
+		"code": "clahe.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from image_norm",
+		"nbins": 256,
+		"clip_limit": 0.03,
+		"final_output": true
+	}
+}

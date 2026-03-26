@@ -1,0 +1,9 @@
+{
+	"image_dewarp": {
+		"code": "refraction_correction.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from input_image",
+        "final_output": true
+	}
+
+}
