@@ -1,0 +1,63 @@
+title: SimpleMind
+description: Adding Thinking to Deep Neural Networks - A Cognitive AI Environment
+url: "https://pawoos.github.io"
+baseurl: "/simplemind-oct"
+
+# Theme
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+header_pages:
+  - index.md
+  - getting-started.md
+  - tutorials.md
+  - documentation.md
+  - examples.md
+  - research.md
+
+# Social links
+github_username: pawoos
+email: your.email@example.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "page"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - simplemind/go/
+  - simplemind/data/
+  - "*.log"
