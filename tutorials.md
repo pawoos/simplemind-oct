@@ -115,6 +115,54 @@ Train your tools with data:
 - Thickness measurements
 - Dewarping correction
 
+##### OCT Image Format Conversion Tool
+
+**Purpose:** Convert PNG images to NIfTI format for OCT analysis pipelines
+
+SimpleMind includes a specialized reformat tool for converting PNG images to NIfTI format with proper medical imaging orientation and metadata. This tool is essential for preparing OCT data for analysis.
+
+**Key Features:**
+- Automatic PNG to NIfTI conversion with proper orientation
+- Batch processing of multiple images
+- Consistent output structure for SimpleMind pipelines
+- CSV metadata generation for dataset tracking
+
+**Usage:**
+```bash
+# Convert PNG images from any folder
+python reformat/reformat.py path/to/png/folder
+
+# Output:
+# - NIfTI images saved to: simplemind/data/oct_images/
+# - Dataset CSV created: simplemind/data/oct_images.csv
+```
+
+**Example Workflow:**
+```bash
+# 1. Place PNG images in a folder (e.g., scan0/)
+# 2. Run the conversion tool
+python reformat/reformat.py reformat/scan0
+
+# 3. Converted files are automatically organized:
+#    - simplemind/data/oct_images/image1.nii.gz
+#    - simplemind/data/oct_images/image2.nii.gz
+#    - simplemind/data/oct_images.csv (dataset metadata)
+```
+
+**CSV Output Format:**
+The tool generates a CSV file compatible with SimpleMind's data loading system:
+```csv
+image,label_mask,sample_args
+oct_images/scan_001.nii.gz,,--upload_tags nifti
+oct_images/scan_002.nii.gz,,--upload_tags nifti
+```
+
+**Technical Details:**
+- Applies 90° counter-clockwise rotation for proper medical imaging orientation
+- Preserves image data as uint8 for efficient storage
+- Creates standardized NIfTI headers for consistent processing
+- Automatically handles batch conversion of entire directories
+
 ### Computer Vision Pipelines
 
 #### Multi-Modal Processing

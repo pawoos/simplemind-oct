@@ -29,6 +29,15 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
 
 # Collections
 collections:

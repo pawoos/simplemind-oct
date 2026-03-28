@@ -36,19 +36,19 @@ SimpleMind allows you to create AI pipelines that can **think** and **learn**:
 ### Pipeline Dashboard
 *Real-time monitoring of your AI pipeline execution*
 
-![Dashboard Screenshot](assets/images/dashboard-screenshot.png)
+<!-- ![Dashboard Screenshot](assets/images/dashboard-screenshot.png) -->
 *The SimpleMind dashboard shows real-time status of pipeline runs, tool execution, and sample processing*
 
 ### Medical Imaging Example
 *Chest X-ray segmentation pipeline in action*
 
-![CXR Segmentation](assets/images/cxr-segmentation-example.png)
+<!-- ![CXR Segmentation](assets/images/cxr-segmentation-example.png) -->
 *Example output: Trachea and lung segmentation on chest X-rays using SimpleMind's thinking pipeline*
 
 ### Tool Development
 *Visual Studio Code integration for tool development*
 
-![Tool Development](assets/images/tool-development-screenshot.png)
+<!-- ![Tool Development](assets/images/tool-development-screenshot.png) -->
 *Developing and testing SimpleMind tools with full IDE support*
 
 ---
