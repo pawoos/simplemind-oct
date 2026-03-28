@@ -1,0 +1,68 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+  
+  <!-- Force dark mode -->
+  <style>
+    html, body {
+      background-color: #0d1117 !important;
+      color: #e6edf3 !important;
+    }
+    
+    .site-header {
+      background-color: #161b22 !important;
+      border-bottom: 1px solid #30363d !important;
+    }
+    
+    .site-title, .site-title:visited, .site-nav .page-link {
+      color: #e6edf3 !important;
+    }
+    
+    .page-content, .wrapper {
+      background-color: #0d1117 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6, p, li, div, span {
+      color: #e6edf3 !important;
+    }
+    
+    a {
+      color: #58a6ff !important;
+    }
+    
+    a:hover {
+      color: #79c0ff !important;
+    }
+    
+    pre, code {
+      background-color: #21262d !important;
+      color: #e6edf3 !important;
+      border: 1px solid #30363d !important;
+    }
+    
+    .site-footer {
+      background-color: #161b22 !important;
+      border-top: 1px solid #30363d !important;
+      color: #7d8590 !important;
+    }
+    
+    blockquote {
+      background-color: #161b22 !important;
+      border-left: 4px solid #58a6ff !important;
+      color: #7d8590 !important;
+    }
+    
+    table, th, td {
+      background-color: #161b22 !important;
+      border: 1px solid #30363d !important;
+      color: #e6edf3 !important;
+    }
+  </style>
+</head>

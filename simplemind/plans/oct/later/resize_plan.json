@@ -1,0 +1,12 @@
+{
+	"image_resize": {
+		"code": "resize.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from refraction_corrected_image",
+		"target_shape": [1, 1, 1920, 1505],
+		"order": 3,
+		"preserve_range": true,
+		"anti_aliasing": true,
+        "final_output": true
+	}
+}

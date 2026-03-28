@@ -3,8 +3,8 @@ description: Adding Thinking to Deep Neural Networks - A Cognitive AI Environmen
 url: "https://pawoos.github.io"
 baseurl: "/simplemind-oct"
 
-# Theme
-theme: minima
+# Theme - let GitHub Pages handle this automatically
+# theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap

@@ -1,0 +1,55 @@
+---
+---
+
+@import "minima";
+
+/* Force dark mode styles */
+* {
+  color-scheme: dark !important;
+}
+
+html {
+  background-color: #0d1117 !important;
+}
+
+body {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+.site-header {
+  background-color: #161b22 !important;
+  border-bottom: 1px solid #30363d !important;
+}
+
+.site-title, .site-title:visited, .site-nav .page-link {
+  color: #e6edf3 !important;
+}
+
+.page-content, .wrapper {
+  background-color: #0d1117 !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, div, span {
+  color: #e6edf3 !important;
+}
+
+a {
+  color: #58a6ff !important;
+}
+
+a:hover {
+  color: #79c0ff !important;
+}
+
+pre, code {
+  background-color: #21262d !important;
+  color: #e6edf3 !important;
+  border: 1px solid #30363d !important;
+}
+
+.site-footer {
+  background-color: #161b22 !important;
+  border-top: 1px solid #30363d !important;
+  color: #7d8590 !important;
+}
