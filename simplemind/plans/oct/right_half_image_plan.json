@@ -1,16 +1,34 @@
 {
     "image_half_right": {
 		"code": "half_image.py",
-		"chunk": "image_postprocessing",
-		"input_image": "from input_image",
+		"chunk": "image_preprocessing",
+		"input_image": "from refraction_corrected_image",
         "side": "right"
 	},
     "image_flip": {
 		"code": "flip.py",
-		"chunk": "image_postprocessing",
+		"chunk": "image_preprocessing",
 		"input_image": "from image_half_right",
-        "axis": "x",
+        "axis": "x"
+	},
+	"image_crop": {
+		"code": "crop.py",
+		"chunk": "image_preprocessing",
+		"input_image": "from image_flip",
+        "square_size": 350,
+		"center_x": 250,
+		"center_y": 650,
 		"final_output": true
-	}
-
+	},
+	"image_crop_annotation": {
+        "code": "uncrop.py",
+		"chunk": "image_preprocessing",
+        "input_image": "from refraction_corrected_image",
+        "cropped_image": "from image_crop",
+		"side": "right",
+		"flip": true,
+        "border_thickness": 10,
+        "fill_region": true,
+        "debug": false
+    }
 }

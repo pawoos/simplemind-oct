@@ -12,6 +12,8 @@ Parameters:
     - cropped_image (SMImage): Cropped image containing crop_region metadata from crop tool.
     - border_thickness (int, optional): Thickness of the crop boundary annotation. Default is 2.
     - fill_region (bool, optional): Whether to fill the entire crop region or just draw the border. Default is False (border only).
+    - side (str, optional): Side the crop was taken from - "left" (default) or "right". Default is "left".
+    - flip (bool, optional): Whether to flip the crop region coordinates over y-axis. Default is False.
     - debug (bool, optional): Enable debug logging. Default is False.
 
 Output:
@@ -24,16 +26,44 @@ Example JSON Plan:
         "cropped_image": "from image_processing-crop",
         "border_thickness": 2,
         "fill_region": false,
+        "side": "left",
+        "flip": false,
         "debug": false
     }
 
-Example with filled region:
+Example with left-side flip only:
+    "image_processing-uncrop": {
+        "code": "uncrop.py",
+        "input_image": "from input_image", 
+        "cropped_image": "from image_processing-crop",
+        "border_thickness": 2,
+        "fill_region": false,
+        "side": "left",
+        "flip": true,
+        "debug": true
+    }
+
+Example with right-side shift only:
+    "image_processing-uncrop": {
+        "code": "uncrop.py",
+        "input_image": "from input_image", 
+        "cropped_image": "from image_processing-crop",
+        "border_thickness": 2,
+        "fill_region": false,
+        "side": "right",
+        "flip": false,
+        "debug": true
+    }
+
+Example with both flip and right-side shift:
     "image_processing-uncrop": {
         "code": "uncrop.py",
         "input_image": "from input_image", 
         "cropped_image": "from image_processing-crop",
         "border_thickness": 3,
         "fill_region": true,
+        "side": "right",
+        "flip": true,
         "debug": true
     }
 
@@ -45,6 +75,15 @@ Notes:
     - Supports both 2D and 3D images with proper coordinate handling.
     - If fill_region is True, the entire crop region is filled with value 2, and border gets value 1.
     - If fill_region is False, only the border is drawn with value 1.
+    - Coordinate transformations are applied independently:
+      * flip=True: Flips crop_region coordinates over y-axis of the half-image (using half_width as flip axis)
+      * side="right": Adds half the image width to x-coordinates
+      * Both can be combined for complex coordinate mappings
+    - Transformation combinations:
+      * side="left", flip=False: No transformation (default)
+      * side="left", flip=True: Only half-image y-axis flip (new_x = half_width - old_x)
+      * side="right", flip=False: Only half-width x-shift (new_x = old_x + half_width)
+      * side="right", flip=True: Both half-image flip and half-width x-shift
 """
 
 import asyncio
@@ -192,6 +231,8 @@ class Uncrop(SMSampleProcessor):
         cropped_image: SMImage,
         border_thickness: int = 2,
         fill_region: bool = False,
+        side: str = "left",
+        flip: bool = False,
         debug: bool = False,
         sample_id: SMSampleID
     ) -> SMImage:
@@ -218,6 +259,78 @@ class Uncrop(SMSampleProcessor):
             
             if debug:
                 self.print_log(f"Found crop_region metadata: {crop_region}", sample_id)
+                self.print_log(f"Side: {side}, Flip: {flip}", sample_id)
+                
+            # Handle side and flip parameters
+            transformation_applied = False
+            if side.lower() == "right" or flip:
+                if debug:
+                    self.print_log("Applying coordinate transformation to crop_region", sample_id)
+                
+                # Get input image width for coordinate transformation
+                input_array = input_image.pixel_array
+                original_shape = input_array.shape
+                
+                # Determine image width from shape
+                if len(original_shape) == 4:
+                    c, dim1, dim2, dim3 = original_shape
+                    if dim3 == 1:  # (C, Y, X, Z) format
+                        img_w = dim2
+                    else:  # (C, Z, Y, X) format
+                        img_w = dim3
+                elif len(original_shape) == 3:
+                    z, h, img_w = original_shape
+                elif len(original_shape) == 2:
+                    h, img_w = original_shape
+                else:
+                    raise ValueError(f"Unsupported image dimensions: {original_shape}")
+                
+                if debug:
+                    self.print_log(f"Image width determined as: {img_w}", sample_id)
+                    self.print_log(f"Original crop_region: start_x={crop_region['start_x']}, end_x={crop_region['end_x']}", sample_id)
+                
+                # Create a copy of crop_region to modify
+                crop_region = crop_region.copy()
+                original_start_x = crop_region['start_x']
+                original_end_x = crop_region['end_x']
+                
+                # Step 1: Apply flip transformation if requested
+                if flip:
+                    if debug:
+                        self.print_log("Applying y-axis flip transformation over half-image width", sample_id)
+                    
+                    # Flip coordinates over y-axis of the half image
+                    # For half-image flip: new_x = half_width - old_x
+                    half_width = img_w // 2
+                    flipped_start_x = half_width - original_end_x
+                    flipped_end_x = half_width - original_start_x
+                    
+                    crop_region['start_x'] = flipped_start_x
+                    crop_region['end_x'] = flipped_end_x
+                    
+                    if debug:
+                        self.print_log(f"Half-image width: {half_width}", sample_id)
+                        self.print_log(f"After half-image y-axis flip: start_x={flipped_start_x}, end_x={flipped_end_x}", sample_id)
+                
+                # Step 2: Apply side transformation if right side
+                if side.lower() == "right":
+                    if debug:
+                        self.print_log("Applying right-side coordinate shift", sample_id)
+                    
+                    # Add half the image width to map to original coordinate system
+                    half_width = img_w // 2
+                    crop_region['start_x'] += half_width
+                    crop_region['end_x'] += half_width
+                    
+                    if debug:
+                        self.print_log(f"After adding half width ({half_width}): start_x={crop_region['start_x']}, end_x={crop_region['end_x']}", sample_id)
+                
+                # Update width to maintain consistency
+                crop_region['width'] = crop_region['end_x'] - crop_region['start_x']
+                transformation_applied = True
+                
+                if debug:
+                    self.print_log(f"Final transformed crop_region: {crop_region}", sample_id)
                 
             # Validate required crop region fields
             required_fields = ['start_x', 'start_y', 'end_x', 'end_y']
@@ -225,8 +338,9 @@ class Uncrop(SMSampleProcessor):
             if missing_fields:
                 raise ValueError(f"crop_region metadata is missing required fields: {missing_fields}")
 
-            # Get input image array shape for mask creation
-            input_array = input_image.pixel_array
+            # Get input image array shape for mask creation (if not already extracted above)
+            if 'input_array' not in locals():
+                input_array = input_image.pixel_array
             original_shape = input_array.shape
             
             if debug:
@@ -271,6 +385,9 @@ class Uncrop(SMSampleProcessor):
                 "annotated_crop_region": crop_region.copy(),
                 "border_thickness": border_thickness,
                 "fill_region": fill_region,
+                "side": side,
+                "flip": flip,
+                "coordinate_transformed": transformation_applied,
                 "original_cropped_shape": cropped_image.metadata.get('original_shape') if cropped_image.metadata else None
             })
 

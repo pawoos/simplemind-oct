@@ -101,9 +101,7 @@ class ScleralSpur(SMSampleProcessor):
         
         # Convert coordinates to integers and apply bounds checking
         x_int = int(round(x))
-        # Invert y-coordinate since image coordinates have (0,0) at top-left
-        # but the neural network coordinates might be from bottom-up
-        y_int = int(round(h - 1 - y))
+        y_int = int(round(y))
         
         # Bounds checking
         x_int = max(0, min(x_int, w - 1))  # x within [0, width-1]

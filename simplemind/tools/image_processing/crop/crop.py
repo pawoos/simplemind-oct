@@ -22,6 +22,7 @@ Parameters:
     - square_size (int, optional): Size for perfect square crop (sets both width and height).
     - center_x (int, optional): X coordinate for center of square crop (used with square_size).
     - center_y (int, optional): Y coordinate for center of square crop (used with square_size).
+    - side (str, optional): Side to crop from - "left" (default) or "right". When "right", flips cropping parameters.
     - debug (bool, optional): Enable debug logging. Default is False.
 
 Output:
@@ -43,6 +44,19 @@ Example JSON Plan (Offset-based):
         "crop_bottom": 50,
         "crop_left": 100,
         "crop_right": 100,
+        "side": "left",
+        "debug": false
+    }
+
+Example JSON Plan (Right-side cropping):
+    "image_processing-crop": {
+        "code": "crop.py",
+        "input_image": "from input_image",
+        "crop_top": 50,
+        "crop_bottom": 50,
+        "crop_left": 100,
+        "crop_right": 100,
+        "side": "right",
         "debug": false
     }
 
@@ -71,6 +85,8 @@ Notes:
     - If square_size is provided, it creates a perfect square crop and takes priority over crop_width/crop_height.
     - If region parameters (start_x, start_y, crop_width, crop_height) are provided, they take priority over offset parameters.
     - For offset-based cropping, any unspecified edge will not be cropped (default 0).
+    - The 'side' parameter controls cropping direction: "left" (default) crops normally, "right" flips left/right parameters and start_x coordinates.
+    - When side="right": crop_left becomes crop_right, crop_right becomes crop_left, and start_x is calculated from the right edge.
     - Automatically handles bounds checking to ensure crop region is within image boundaries.
     - Supports both 2D and 3D images with proper metadata handling.
     - The output metadata includes crop_region coordinates that can be used by subsequent tools to map the cropped region back to the original image coordinates.
@@ -103,6 +119,7 @@ class Crop(SMSampleProcessor):
         square_size: int = None,
         center_x: int = None,
         center_y: int = None,
+        side: str = "left",
         debug: bool = False,
         sample_id: SMSampleID
     ) -> SMImage:
@@ -115,6 +132,7 @@ class Crop(SMSampleProcessor):
 
         if debug:
             self.print_log(f"Input shape: {input_array.shape}", sample_id)
+            self.print_log(f"Cropping from side: {side}", sample_id)
 
         # Normalize shape - squeeze out singleton dimensions
         input_array = np.squeeze(input_array)
@@ -123,21 +141,48 @@ class Crop(SMSampleProcessor):
         if input_array.ndim not in [2, 3]:
             raise ValueError(f"Input must be 2D or 3D, got shape: {input_array.shape}")
 
+        # Get image dimensions for side parameter processing
+        if input_array.ndim == 2:
+            img_h, img_w = input_array.shape
+        else:
+            if len(input_array.shape) == 3 and input_array.shape[2] <= 4:  # Color channels
+                img_h, img_w, _ = input_array.shape
+            else:  # 3D volume
+                _, img_h, img_w = input_array.shape
+
+        # Handle side parameter - flip parameters if cropping from right
+        if side.lower() == "right":
+            if debug:
+                self.print_log("Flipping parameters for right-side cropping", sample_id)
+            
+            # Flip offset-based parameters
+            crop_left, crop_right = crop_right, crop_left
+            
+            # Flip region-based parameters
+            if start_x is not None:
+                # Convert start_x from left-based to right-based coordinate
+                if crop_width is not None:
+                    start_x = img_w - start_x - crop_width
+                else:
+                    start_x = img_w - start_x
+            
+            # Flip center_x for square crops
+            if center_x is not None:
+                center_x = img_w - center_x
+                
+            if debug:
+                self.print_log(f"After flipping - crop_left: {crop_left}, crop_right: {crop_right}", sample_id)
+                if start_x is not None:
+                    self.print_log(f"After flipping - start_x: {start_x}", sample_id)
+                if center_x is not None:
+                    self.print_log(f"After flipping - center_x: {center_x}", sample_id)
+
         # Determine cropping mode and calculate crop bounds
         if square_size is not None:
             # Square crop mode - takes highest priority
             if debug:
                 self.print_log(f"Using square crop mode - size: {square_size}", sample_id)
             
-            # Get image dimensions
-            if input_array.ndim == 2:
-                img_h, img_w = input_array.shape
-            else:
-                if len(input_array.shape) == 3 and input_array.shape[2] <= 4:  # Color channels
-                    img_h, img_w, _ = input_array.shape
-                else:  # 3D volume
-                    _, img_h, img_w = input_array.shape
-
             # Calculate center point
             if center_x is not None and center_y is not None:
                 # Use provided center
@@ -193,15 +238,14 @@ class Crop(SMSampleProcessor):
             if debug:
                 self.print_log("Using region-based cropping mode", sample_id)
             
-            # Get image dimensions
+            # Get 3D dimension if needed
             if input_array.ndim == 2:
-                img_h, img_w = input_array.shape
                 img_d = 1
             else:
                 if len(input_array.shape) == 3 and input_array.shape[2] <= 4:  # Color channels
-                    img_h, img_w, img_d = input_array.shape
+                    img_d = input_array.shape[2]
                 else:  # 3D volume
-                    img_d, img_h, img_w = input_array.shape
+                    img_d = input_array.shape[0]
 
             # Set defaults for region parameters
             start_x = start_x if start_x is not None else 0
@@ -241,15 +285,6 @@ class Crop(SMSampleProcessor):
             if debug:
                 self.print_log("Using offset-based cropping mode", sample_id)
             
-            # Get image dimensions
-            if input_array.ndim == 2:
-                img_h, img_w = input_array.shape
-            else:
-                if len(input_array.shape) == 3 and input_array.shape[2] <= 4:  # Color channels
-                    img_h, img_w, _ = input_array.shape
-                else:  # 3D volume
-                    _, img_h, img_w = input_array.shape
-
             # Calculate crop bounds from offsets
             start_x = crop_left
             end_x = img_w - crop_right

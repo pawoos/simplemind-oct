@@ -2,7 +2,7 @@
 	"image_half_left": {
 		"code": "half_image.py",
 		"chunk": "image_preprocessing",
-		"input_image": "from input_image",
+		"input_image": "from refraction_corrected_image",
         "side": "left"
 	},
 	"image_crop": {
@@ -17,7 +17,7 @@
 	"image_crop_annotation": {
         "code": "uncrop.py",
 		"chunk": "image_preprocessing",
-        "input_image": "from input_image",
+        "input_image": "from refraction_corrected_image",
         "cropped_image": "from image_crop",
         "border_thickness": 10,
         "fill_region": true,

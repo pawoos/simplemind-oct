@@ -12,7 +12,9 @@ Parameters:
     - cropped_detection (SMImage): Image with scleral spur detection results containing both crop_region and scleral_spur coordinates.
     - circle_radius (int, optional): Radius of the circle marker. Default is 3.
     - rectangle_size (int, optional): Size of the rectangle around the scleral spur. Default is 15.
-    - draw_rectangle (bool, optional): Whether to draw the rectangle annotation. Default is True.
+    - draw_rectangle (bool, optional): Whether to draw the rectangle annotation. Default is False.
+    - side (str, optional): Side the crop was taken from - "left" (default) or "right". Default is "left".
+    - flip (bool, optional): Whether to flip the scleral spur coordinates over half-image y-axis. Default is False.
     - debug (bool, optional): Enable debug logging. Default is False.
 
 Output:
@@ -25,8 +27,23 @@ Example JSON Plan:
         "cropped_detection": "from neural_net-oct_ss_detection",
         "circle_radius": 3,
         "rectangle_size": 15,
-        "draw_rectangle": true,
+        "draw_rectangle": false,
+        "side": "left",
+        "flip": false,
         "debug": false
+    }
+
+Example with right-side flip transformation:
+    "mask_processing-uncrop_scleral_spur": {
+        "code": "uncrop_scleral_spur.py",
+        "input_image": "from input_image",
+        "cropped_detection": "from neural_net-oct_ss_detection",
+        "circle_radius": 3,
+        "rectangle_size": 15,
+        "draw_rectangle": true,
+        "side": "right",
+        "flip": true,
+        "debug": true
     }
 
 Notes:
@@ -37,6 +54,15 @@ Notes:
     - Original image remains unchanged in pixel_array.
     - Annotation marker is stored in label_array for color overlay.
     - Translated coordinates are added to output metadata as 'full_image_scleral_spur_x' and 'full_image_scleral_spur_y'.
+    - Coordinate transformations are applied independently:
+      * flip=True: Flips scleral spur coordinates over y-axis of the half-image (using half_width as flip axis)
+      * side="right": Adds half the image width to x-coordinates
+      * Both can be combined for complex coordinate mappings
+    - Transformation combinations:
+      * side="left", flip=False: No transformation (default)
+      * side="left", flip=True: Only half-image y-axis flip (new_x = half_width - old_x)
+      * side="right", flip=False: Only half-width x-shift (new_x = old_x + half_width)
+      * side="right", flip=True: Both half-image flip and half-width x-shift
 """
 
 import asyncio
@@ -178,7 +204,9 @@ class UncropScleralSpur(SMSampleProcessor):
         cropped_detection: SMImage,
         circle_radius: int = 3,
         rectangle_size: int = 15,
-        draw_rectangle: bool = True,
+        draw_rectangle: bool = False,
+        side: str = "left",
+        flip: bool = False,
         debug: bool = False,
         sample_id: SMSampleID
     ) -> SMImage:
@@ -215,19 +243,100 @@ class UncropScleralSpur(SMSampleProcessor):
             if debug:
                 self.print_log(f"Found crop_region metadata: {crop_region}", sample_id)
                 self.print_log(f"Found scleral spur coordinates in cropped space: ({spur_x_cropped}, {spur_y_cropped})", sample_id)
+                self.print_log(f"Side: {side}, Flip: {flip}", sample_id)
                 
+            # Handle side and flip parameters for crop region metadata
+            if flip:
+                if debug:
+                    self.print_log("Flipping crop_region metadata coordinates", sample_id)
+                
+                # Get input image width for coordinate transformation
+                input_array = input_image.pixel_array
+                original_shape = input_array.shape
+                
+                # Determine image width from shape
+                if len(original_shape) == 4:
+                    c, dim1, dim2, dim3 = original_shape
+                    if dim3 == 1:  # (C, Y, X, Z) format
+                        img_w = dim2
+                    else:  # (C, Z, Y, X) format
+                        img_w = dim3
+                elif len(original_shape) == 3:
+                    z, h, img_w = original_shape
+                elif len(original_shape) == 2:
+                    h, img_w = original_shape
+                else:
+                    raise ValueError(f"Unsupported image dimensions: {original_shape}")
+                
+                # Create a copy of crop_region to modify
+                crop_region = crop_region.copy()
+                
+                # Flip the crop region coordinates over half-image y-axis
+                half_image_width = img_w // 2
+                original_start_x = crop_region['start_x']
+                original_end_x = crop_region['end_x']
+                
+                # Flip the crop region coordinates
+                crop_region['start_x'] = half_image_width - original_end_x
+                crop_region['end_x'] = half_image_width - original_start_x
+                crop_region['width'] = crop_region['end_x'] - crop_region['start_x']
+                
+                if debug:
+                    self.print_log(f"Original crop_region: start_x={original_start_x}, end_x={original_end_x}", sample_id)
+                    self.print_log(f"Flipped crop_region: start_x={crop_region['start_x']}, end_x={crop_region['end_x']}", sample_id)
+
             # Validate required crop region fields
             required_fields = ['start_x', 'start_y', 'end_x', 'end_y']
             missing_fields = [field for field in required_fields if field not in crop_region]
             if missing_fields:
                 raise ValueError(f"crop_region metadata is missing required fields: {missing_fields}")
 
-            # Translate scleral spur coordinates from cropped space to full image space
-            # The cropped coordinates are relative to the cropped region, so we add the crop offset
-            # Note: Do NOT apply Y-inversion here yet, as the coordinates are already in the correct orientation
-            full_spur_x = spur_x_cropped + crop_region['start_x']
-            full_spur_y = spur_y_cropped + crop_region['start_y']
+            # Step 1: Translate scleral spur coordinates from cropped space to half-image space
+            # (using the potentially flipped crop_region coordinates)
+            half_image_spur_x = spur_x_cropped + crop_region['start_x']
+            half_image_spur_y = spur_y_cropped + crop_region['start_y']
             
+            if debug:
+                self.print_log(f"Step 1 - Translated from cropped to half-image space: ({half_image_spur_x}, {half_image_spur_y})", sample_id)
+
+            # Step 2: Apply side transformation if right side (map from half-image to full image)
+            if side.lower() == "right":
+                if debug:
+                    self.print_log("Step 2 - Applying right-side coordinate shift (half-image -> full image space)", sample_id)
+                
+                # Add half the image width to map from right-half space to full image space
+                if 'img_w' not in locals():
+                    # Get image width if not already calculated
+                    input_array = input_image.pixel_array
+                    original_shape = input_array.shape
+                    
+                    if len(original_shape) == 4:
+                        c, dim1, dim2, dim3 = original_shape
+                        if dim3 == 1:  # (C, Y, X, Z) format
+                            img_w = dim2
+                        else:  # (C, Z, Y, X) format
+                            img_w = dim3
+                    elif len(original_shape) == 3:
+                        z, h, img_w = original_shape
+                    elif len(original_shape) == 2:
+                        h, img_w = original_shape
+                    else:
+                        raise ValueError(f"Unsupported image dimensions: {original_shape}")
+                
+                half_width = img_w // 2
+                full_spur_x = half_image_spur_x + half_width
+                
+                if debug:
+                    self.print_log(f"After adding half width ({half_width}): spur_x={full_spur_x}", sample_id)
+            else:
+                # Left side - no additional offset needed
+                full_spur_x = half_image_spur_x
+            
+            full_spur_y = half_image_spur_y
+            transformation_applied = flip or side.lower() == "right"
+            
+            if debug:
+                self.print_log(f"Final scleral spur coordinates: ({full_spur_x}, {full_spur_y})", sample_id)
             if debug:
                 self.print_log(f"Crop region offset: ({crop_region['start_x']}, {crop_region['start_y']})", sample_id)
                 self.print_log(f"Translated scleral spur coordinates to full image space: ({full_spur_x}, {full_spur_y})", sample_id)
@@ -319,6 +428,9 @@ class UncropScleralSpur(SMSampleProcessor):
                 "circle_radius": circle_radius,
                 "rectangle_size": rectangle_size,
                 "draw_rectangle": draw_rectangle,
+                "side": side,
+                "flip": flip,
+                "coordinate_transformed": transformation_applied,
                 "scleral_spur_detected": cropped_detection.metadata.get('scleral_spur_detected', True),
                 "box_size": cropped_detection.metadata.get('box_size')
             })

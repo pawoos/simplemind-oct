@@ -3,7 +3,7 @@
 		"code": "resize.py",
 		"chunk": "image_preprocessing",
 		"input_image": "from input_image",
-		"target_shape": [1, 1, 1920, 1505],
+		"target_shape": [1, 1, 1505, 1920],
 		"order": 3,
 		"preserve_range": true,
 		"anti_aliasing": true
